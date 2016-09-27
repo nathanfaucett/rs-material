@@ -1,0 +1,17 @@
+[package]
+name = "material"
+version = "0.1.0"
+authors = ["nathanfaucett <nathanfaucett@gmail.com>"]
+
+keywords = ["material"]
+description = "scene renderer"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/nathanfaucett/rs-material.git"
+homepage = "https://github.com/nathanfaucett/rs-material"
+
+[dependencies.gl_context]
+git = "https://github.com/nathanfaucett/rs-gl_context.git"
+
+[dependencies.shader]
+git = "https://github.com/nathanfaucett/rs-shader.git"
