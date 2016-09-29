@@ -1,8 +1,8 @@
-#![feature(collections, alloc)]
+#![feature(collections)]
 #![no_std]
 
 
-extern crate alloc;
+extern crate shared;
 extern crate collections;
 
 extern crate gl_context;

@@ -10,6 +10,9 @@ readme = "README.md"
 repository = "https://github.com/nathanfaucett/rs-material.git"
 homepage = "https://github.com/nathanfaucett/rs-material"
 
+[dependencies.shared]
+git = "https://github.com/nathanfaucett/rs-shared.git"
+
 [dependencies.gl_context]
 git = "https://github.com/nathanfaucett/rs-gl_context.git"
 

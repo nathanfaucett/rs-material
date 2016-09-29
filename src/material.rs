@@ -1,8 +1,7 @@
 use collections::btree_map::BTreeMap;
 use collections::string::String;
-use alloc::rc::Rc;
-use core::cell::RefCell;
 
+use shared::Shared;
 use gl_context::{CullFace, Blending};
 use shader::Shader;
 
@@ -24,14 +23,14 @@ pub struct MaterialData {
 
 #[derive(Clone)]
 pub struct Material {
-    data: Rc<RefCell<MaterialData>>,
+    data: Shared<MaterialData>,
 }
 
 impl Material {
 
     pub fn new() -> Self {
         Material {
-            data: Rc::new(RefCell::new(MaterialData {
+            data: Shared::new(MaterialData {
                 shader: None,
 
                 cull_face: CullFace::Back,
@@ -44,7 +43,7 @@ impl Material {
                 cast_shadow: true,
 
                 uniforms: BTreeMap::new(),
-            }))
+            })
         }
     }
 }
