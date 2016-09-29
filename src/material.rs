@@ -1,5 +1,7 @@
 use collections::btree_map::BTreeMap;
 use collections::string::String;
+use collections::boxed::Box;
+use core::any::Any;
 
 use shared::Shared;
 use gl_context::{CullFace, Blending};
@@ -18,7 +20,7 @@ pub struct MaterialData {
     receive_shadow: bool,
     cast_shadow: bool,
 
-    uniforms: BTreeMap<String, usize>,
+    uniforms: BTreeMap<String, Box<Any>>,
 }
 
 #[derive(Clone)]
@@ -106,10 +108,10 @@ impl Material {
         self
     }
 
-    pub fn get_uniforms(&self) -> &BTreeMap<String, usize> {
+    pub fn get_uniforms(&self) -> &BTreeMap<String, Box<Any>> {
         &self.data.uniforms
     }
-    pub fn get_mut_uniforms(&mut self) -> &mut BTreeMap<String, usize> {
+    pub fn get_mut_uniforms(&mut self) -> &mut BTreeMap<String, Box<Any>> {
         &mut self.data.uniforms
     }
 }
