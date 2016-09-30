@@ -1,6 +1,7 @@
+use alloc::boxed::Box;
 use collections::btree_map::BTreeMap;
 use collections::string::String;
-use collections::boxed::Box;
+
 use core::any::Any;
 
 use shared::Shared;
