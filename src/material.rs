@@ -1,9 +1,9 @@
 use alloc::boxed::Box;
-use collections::btree_map::BTreeMap;
 use collections::string::String;
 
 use core::any::Any;
 
+use hash_map::HashMap;
 use shared::Shared;
 use gl_context::{CullFace, Blending};
 use shader::Shader;
@@ -21,7 +21,7 @@ pub struct MaterialData {
     receive_shadow: bool,
     cast_shadow: bool,
 
-    uniforms: BTreeMap<String, Box<Any>>,
+    uniforms: HashMap<String, Box<Any>>,
 }
 
 #[derive(Clone)]
@@ -45,7 +45,7 @@ impl Material {
                 receive_shadow: true,
                 cast_shadow: true,
 
-                uniforms: BTreeMap::new(),
+                uniforms: HashMap::new(),
             })
         }
     }
@@ -109,10 +109,10 @@ impl Material {
         self
     }
 
-    pub fn get_uniforms(&self) -> &BTreeMap<String, Box<Any>> {
+    pub fn get_uniforms(&self) -> &HashMap<String, Box<Any>> {
         &self.data.uniforms
     }
-    pub fn get_mut_uniforms(&mut self) -> &mut BTreeMap<String, Box<Any>> {
+    pub fn get_mut_uniforms(&mut self) -> &mut HashMap<String, Box<Any>> {
         &mut self.data.uniforms
     }
 }

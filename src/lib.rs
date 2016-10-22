@@ -6,6 +6,7 @@
 extern crate alloc;
 extern crate collections;
 
+extern crate hash_map;
 extern crate shared;
 extern crate gl_context;
 extern crate shader;
