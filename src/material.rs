@@ -112,7 +112,7 @@ impl Material {
     pub fn get_uniforms(&self) -> &HashMap<String, Box<Any>> {
         &self.data.uniforms
     }
-    pub fn get_mut_uniforms(&mut self) -> &mut HashMap<String, Box<Any>> {
+    pub fn get_uniforms_mut(&mut self) -> &mut HashMap<String, Box<Any>> {
         &mut self.data.uniforms
     }
 }
