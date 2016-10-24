@@ -124,3 +124,28 @@ impl Hash for Material {
          (&*self.data as *const _).hash(state);
     }
 }
+
+impl PartialEq<Material> for Material {
+    fn eq(&self, other: &Material) -> bool {
+        let ref a = self.data;
+        let ref b = other.data;
+        let same_shader = if a.shader.is_some() && b.shader.is_some() {
+            a.shader.as_ref().unwrap().eq(a.shader.as_ref().unwrap())
+        } else {
+            false
+        };
+
+        return
+            same_shader &&
+
+            a.cull_face == b.cull_face &&
+            a.blending == b.blending &&
+
+            a.wireframe == b.wireframe &&
+            a.wireframe_line_width == b.wireframe_line_width &&
+
+            a.receive_shadow == b.receive_shadow &&
+            a.cast_shadow == b.cast_shadow;
+    }
+}
+impl Eq for Material {}
