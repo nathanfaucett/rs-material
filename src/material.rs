@@ -2,6 +2,7 @@ use alloc::boxed::Box;
 use collections::string::String;
 
 use core::any::Any;
+use core::hash::{Hash, Hasher};
 
 use hash_map::HashMap;
 use shared::Shared;
@@ -114,5 +115,12 @@ impl Material {
     }
     pub fn get_uniforms_mut(&mut self) -> &mut HashMap<String, Box<Any>> {
         &mut self.data.uniforms
+    }
+}
+
+impl Hash for Material {
+    #[inline]
+    fn hash<H: Hasher>(&self, state: &mut H) {
+         (&*self.data as *const _).hash(state);
     }
 }
