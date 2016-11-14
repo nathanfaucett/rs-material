@@ -21,3 +21,7 @@ git = "https://github.com/nathanfaucett/rs-gl_context.git"
 
 [dependencies.shader]
 git = "https://github.com/nathanfaucett/rs-shader.git"
+
+[dependencies.uuid]
+version = "0.2"
+features = ["v4"]

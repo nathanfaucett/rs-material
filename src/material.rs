@@ -4,6 +4,8 @@ use collections::string::String;
 use core::any::Any;
 use core::hash::{Hash, Hasher};
 
+use uuid::Uuid;
+
 use hash_map::HashMap;
 use shared::Shared;
 use gl_context::{CullFace, Blending};
@@ -11,6 +13,8 @@ use shader::Shader;
 
 
 pub struct MaterialData {
+    uuid: Uuid,
+
     shader: Option<Shader>,
 
     cull_face: CullFace,
@@ -35,6 +39,8 @@ impl Material {
     pub fn new() -> Self {
         Material {
             data: Shared::new(MaterialData {
+                uuid: Uuid::new_v4(),
+
                 shader: None,
 
                 cull_face: CullFace::Back,
@@ -50,6 +56,8 @@ impl Material {
             })
         }
     }
+
+    pub fn get_uuid(&self) -> &Uuid {&self.data.uuid}
 
     pub fn get_shader(&self) -> Option<Shader> {
         match self.data.shader {
