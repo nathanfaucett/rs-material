@@ -23,9 +23,6 @@ pub struct MaterialData {
     wireframe: bool,
     wireframe_line_width: f32,
 
-    receive_shadow: bool,
-    cast_shadow: bool,
-
     uniforms: HashMap<String, Box<Any>>,
 }
 
@@ -48,9 +45,6 @@ impl Material {
 
                 wireframe: false,
                 wireframe_line_width: 1f32,
-
-                receive_shadow: true,
-                cast_shadow: true,
 
                 uniforms: HashMap::new(),
             })
@@ -102,22 +96,6 @@ impl Material {
         self
     }
 
-    pub fn get_receive_shadow(&self) -> bool {
-        self.data.receive_shadow
-    }
-    pub fn set_receive_shadow(&mut self, receive_shadow: bool) -> &mut Self {
-        self.data.receive_shadow = receive_shadow;
-        self
-    }
-
-    pub fn get_cast_shadow(&self) -> bool {
-        self.data.cast_shadow
-    }
-    pub fn set_cast_shadow(&mut self, cast_shadow: bool) -> &mut Self {
-        self.data.cast_shadow = cast_shadow;
-        self
-    }
-
     pub fn get_uniforms(&self) -> &HashMap<String, Box<Any>> {
         &self.data.uniforms
     }
@@ -137,6 +115,7 @@ impl PartialEq<Material> for Material {
     fn eq(&self, other: &Material) -> bool {
         let ref a = self.data;
         let ref b = other.data;
+        
         let same_shader = if a.shader.is_some() && b.shader.is_some() {
             a.shader.as_ref().unwrap().eq(a.shader.as_ref().unwrap())
         } else {
@@ -150,10 +129,7 @@ impl PartialEq<Material> for Material {
             a.blending == b.blending &&
 
             a.wireframe == b.wireframe &&
-            a.wireframe_line_width == b.wireframe_line_width &&
-
-            a.receive_shadow == b.receive_shadow &&
-            a.cast_shadow == b.cast_shadow;
+            a.wireframe_line_width == b.wireframe_line_width
     }
 }
 impl Eq for Material {}
