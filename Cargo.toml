@@ -10,18 +10,9 @@ readme = "README.md"
 repository = "https://github.com/nathanfaucett/rs-material.git"
 homepage = "https://github.com/nathanfaucett/rs-material"
 
-[dependencies.hash_map]
-git = "https://github.com/nathanfaucett/rs-hash_map.git"
-
-[dependencies.shared]
-git = "https://github.com/nathanfaucett/rs-shared.git"
-
-[dependencies.gl_context]
-git = "https://github.com/nathanfaucett/rs-gl_context.git"
-
-[dependencies.shader]
-git = "https://github.com/nathanfaucett/rs-shader.git"
-
-[dependencies.uuid]
-version = "0.2"
-features = ["v4"]
+[dependencies]
+uuid = {version = "0.2", features = ["v4"]}
+shader = {git = "https://github.com/nathanfaucett/rs-shader.git"}
+gl_context = {git = "https://github.com/nathanfaucett/rs-gl_context.git"}
+shared = {git = "https://github.com/nathanfaucett/rs-shared.git"}
+hash_map = {git = "https://github.com/nathanfaucett/rs-hash_map.git"}
